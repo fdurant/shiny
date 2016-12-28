@@ -8,7 +8,7 @@ nginx1:
     - /etc/nginx/conf.d
     - /etc/nginx/vhost.d
     - /usr/share/nginx/html
-    - /home/your_user/services/volumes/proxy/certs:/etc/nginx/certs:ro
+    - /home/dkr/services/volumes/proxy/certs:/etc/nginx/certs:ro
 
 nginx-gen:
   links:
@@ -17,7 +17,7 @@ nginx-gen:
   container_name: nginx-gen
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock:ro
-    - /home/your_user/services/volumes/proxy/templates/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+    - /home/dkr/services/volumes/proxy/templates/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
   volumes_from:
     - nginx1
   entrypoint: /usr/local/bin/docker-gen -notify-sighup nginx -watch -only-exposed -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
@@ -32,9 +32,9 @@ rstudio:
   environment:
     - VIRTUAL_PORT=8787
     - ROOT=TRUE
-    - VIRTUAL_HOST=rstudio.DOMAIN.tld
-    - USER=SOME_USER
-    - PASSWORD=SOME_PASS
+    - VIRTUAL_HOST=rstudio.frederikdurant.com
+    - USER=fdurant
+    - PASSWORD=mypasswd
 
 shiny:
   links:
@@ -42,8 +42,8 @@ shiny:
   image: rocker/shiny
   container_name: shiny
   environment:
-    - VIRTUAL_HOST=shiny.DOMAIN.tld
+    - VIRTUAL_HOST=shiny.frederikdurant.com
   volumes:
-    - /home/your_user/services/volumes/shiny/apps:/srv/shiny-server/
-    - /home/your_user/services/volumes/shiny/logs:/var/log/
-    - /home/your_user/services/volumes/shiny/packages:/home/shiny/
+    - /home/dkr/services/volumes/shiny/apps:/srv/shiny-server/
+    - /home/dkr/services/volumes/shiny/logs:/var/log/
+    - /home/dkr/services/volumes/shiny/packages:/home/shiny/
