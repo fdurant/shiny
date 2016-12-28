@@ -22,20 +22,6 @@ nginx-gen:
     - nginx1
   entrypoint: /usr/local/bin/docker-gen -notify-sighup nginx -watch -only-exposed -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
 
-rstudio:
-  links:
-    - "nginx1"
-  image: rocker/hadleyverse
-  container_name: rstudio
-  ports:
-    - "8787:8787"
-  environment:
-    - VIRTUAL_PORT=8787
-    - ROOT=TRUE
-    - VIRTUAL_HOST=rstudio.frederikdurant.com
-    - USER=fdurant
-    - PASSWORD=mypasswd
-
 shiny:
   links:
     - "nginx1"
