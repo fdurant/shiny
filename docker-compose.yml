@@ -22,6 +22,15 @@ nginx-gen:
     - nginx1
   entrypoint: /usr/local/bin/docker-gen -notify-sighup nginx -watch -only-exposed -wait 5s:30s /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
 
+neo4j:
+  image: neo4j
+  environment:
+  - NEO4J_AUTH: .env
+  cap_add:
+  - SYS_RESOURCE
+  ports:
+  - "7474:7474"
+
 shiny:
   links:
     - "nginx1"
