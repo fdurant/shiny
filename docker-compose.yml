@@ -23,12 +23,11 @@ services:
       - "3838:3838"
 
   neo4j:
-    image: neo4j:3.1.0
-    container_name: neo4j
+    image: jgkim/neo4j
+    container_name: neo4j_apoc_spatial
     env_file: .env
     cap_add:
     - SYS_RESOURCE
     ports:
     - "7474:7474"
     - "7687:7687"
-
