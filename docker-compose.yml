@@ -1,6 +1,9 @@
 nginx1:
   image: nginx
   container_name: nginx
+  ports:
+  - "80:80"
+  - "433:433"
   volumes:
     - /etc/nginx/conf.d
     - /etc/nginx/vhost.d
