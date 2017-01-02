@@ -16,11 +16,11 @@ services:
     environment:
       - VIRTUAL_HOST=shiny.frederikdurant.com
     volumes:
-      - /home/dkr/services/volumes/shiny/apps:/srv/shiny-server/
+      - ./shiny_apps:/srv/shiny-server/
       - /home/dkr/services/volumes/shiny/logs:/var/log/
       - /home/dkr/services/volumes/shiny/packages:/home/shiny/
     ports:
-      - "3838:3838"
+      - "80:3838"
 
   neo4j:
     image: jgkim/neo4j
