@@ -5,6 +5,8 @@ services:
     container_name: nginx-proxy
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
+    labels:
+      - "description"="Frederik's nginx reverse proxy server"
 
   shiny:
     links:
@@ -19,6 +21,8 @@ services:
       - /home/dkr/services/volumes/shiny/packages:/home/shiny/
     ports:
       - "80:3838"
+    labels:
+      - "description"="Frederik's R shiny server"
 
   neo4j:
     image: jgkim/neo4j
@@ -29,3 +33,5 @@ services:
     ports:
     - "7474:7474"
     - "7687:7687"
+    labels:
+      - "description"="Frederik's Neo4J graph database server"
