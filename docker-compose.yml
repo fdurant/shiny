@@ -1,9 +1,6 @@
 nginx1:
   image: nginx
   container_name: nginx
-  ports:
-  - "80:80"
-  - "443:443"
   volumes:
     - /etc/nginx/conf.d
     - /etc/nginx/vhost.d
@@ -43,3 +40,5 @@ shiny:
     - /home/dkr/services/volumes/shiny/apps:/srv/shiny-server/
     - /home/dkr/services/volumes/shiny/logs:/var/log/
     - /home/dkr/services/volumes/shiny/packages:/home/shiny/
+  ports:
+    - "80:3838"
