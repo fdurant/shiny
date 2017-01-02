@@ -8,15 +8,6 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
-  neo4j:
-    image: neo4j:3.1.0
-    env_file: .env
-    cap_add:
-    - SYS_RESOURCE
-    ports:
-    - "7474:7474"
-    - "7687:7687"
-
   shiny:
     links:
       - "nginx-proxy"
@@ -30,3 +21,14 @@ services:
       - /home/dkr/services/volumes/shiny/packages:/home/shiny/
     ports:
       - "3838:3838"
+
+  neo4j:
+    image: neo4j:3.1.0
+    container_name: neo4j
+    env_file: .env
+    cap_add:
+    - SYS_RESOURCE
+    ports:
+    - "7474:7474"
+    - "7687:7687"
+
