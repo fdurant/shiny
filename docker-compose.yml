@@ -30,6 +30,9 @@ services:
       dockerfile: neo4j/Dockerfile
     container_name: official_neo4j_plus_apoc
     env_file: .env
+    environment:
+      - NEO4J_HEAP_MEMORY=2048
+      - NEO4J_CACHE_MEMORY=1G
     cap_add:
       - SYS_RESOURCE
     ports:
