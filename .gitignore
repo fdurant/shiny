@@ -35,3 +35,6 @@ vignettes/*.pdf
 # Emacs backup files
 *~
 .Rproj.user
+
+# Environment file with potential secrets
+.env
