@@ -1,5 +1,5 @@
 # Inspired by https://hub.docker.com/r/jgkim/neo4j/~/dockerfile/
-FROM neo4j:3.0.1
+FROM neo4j:3.0.9
 MAINTAINER Frederik Durant <frederik.durant@pandora.be>
 
 ENV NEO4J_PLUGINS_PATH /var/lib/neo4j/plugins/
